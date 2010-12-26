@@ -1,3 +1,6 @@
 pkg/*
 *.gem
 .bundle
+
+# Don't commit this one, since it's currently in development
+Gemfile.lock
