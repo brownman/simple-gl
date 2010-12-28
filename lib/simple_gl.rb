@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'opengl'
+
 module SimpleGl
-  # Your code goes here...
 end
