@@ -2,5 +2,9 @@ pkg/*
 *.gem
 .bundle
 
+# Rebuildable
+doc/*
+tags
+
 # Don't commit this one, since it's currently in development
 Gemfile.lock

@@ -4,7 +4,14 @@ require 'simple_gl/gl_context'
 module SimpleGl
   include Glu,Glut
 
+  # Acts as a basic glut application, with convenience methods to initialize
+  # the window and set some standard parameters.
+  #
+  # TODO: Needs to be much more configurable, although that'll have to wait
+  # until more examples are collected.
   class GlutApp
+    attr_reader :gl
+
     def initialize(&block)
       @gl = GlContext.new
 
