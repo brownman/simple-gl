@@ -4,11 +4,11 @@ require 'simple_gl/glut_app'
 include SimpleGl
 
 $ctrlpoints = [
-	[-4.0,-4.0, 0.0],
-	[-2.0, 4.0, 0.0],
-	[ 2.0,-4.0, 0.0],
-	[ 4.0, 4.0, 0.0]
-	]
+[ -4, -4, 0 ],
+[ -2, 4, 0 ],
+[ 2, -4, 0 ],
+[ 4, 4, 0 ],
+]
 
 app = GlutApp.new do
   init do
@@ -24,21 +24,27 @@ app = GlutApp.new do
   end
 
   display do
-    glClear(GL_COLOR_BUFFER_BIT)
-    glColor(1.0, 1.0, 1.0)
-    glBegin(GL_LINE_STRIP)
-    for i in 0..30
-      glEvalCoord1d(i.to_f/30.0)
+    @gl.clear
+    @gl.color 1, 1, 1
+    @gl.begin :line_strip do
+      for i in 0..30
+        glEvalCoord1d(i.to_f/30.0)
+      end
     end
-    glEnd
+
     # The following code displays the control points as dots.
-    glPointSize(5.0)
-    glColor(1.0, 1.0, 0.0)
-    glBegin(GL_POINTS)
-    for i in 0...4
-      glVertex($ctrlpoints[i])
+    @gl.point_size = 5
+    @gl.color 1, 1, 0
+
+    @gl.begin :points do
+      for i in 0...4
+        vertex -4, -4, 0
+        vertex -2, 4, 0
+        vertex 2, -4, 0
+        vertex 4, 4, 0
+      end
     end
-    glEnd
+
     glutSwapBuffers
   end
 

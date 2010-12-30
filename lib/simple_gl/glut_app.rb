@@ -1,10 +1,13 @@
 require 'opengl'
+require 'simple_gl/gl_context'
 
 module SimpleGl
-  include Gl,Glu,Glut
+  include Glu,Glut
 
   class GlutApp
     def initialize(&block)
+      @gl = GlContext.new
+
       instance_eval &block
     end
 
