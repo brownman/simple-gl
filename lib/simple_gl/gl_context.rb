@@ -26,39 +26,39 @@ module SimpleGl
     #
     # Example:
     #
-    # begin :points do
-      #   vertex 1, 2, 3
-      #   vertex 2, 3, 4
-      # end
-      def begin(type, &block)
-        GL.Begin(gl_constant(type))
+    #   begin :points do
+    #     vertex 1, 2, 3
+    #     vertex 2, 3, 4
+    #   end
+    def begin(type, &block)
+      GL.Begin(gl_constant(type))
 
-        instance_eval(&block)
+      instance_eval(&block)
 
-        GL.End
-      end
+      GL.End
+    end
 
-      def vertex(*args)
-        args.map! &:to_f
-        GL.Vertex(*args)
-      end
+    def vertex(*args)
+      args.map! &:to_f
+      GL.Vertex(*args)
+    end
 
-      # Delegates underscored ruby-style methods to standard camelcased OpenGL
-      # ones.
-      #
-      # Example:
-      #
-      # matrix_mode(GL_PROJECTION) # => GL.MatrixMode(GL_PROJECTION)
-      # ortho(1, 2, 3, 4, 5, 6)    # => GL.Ortho(1, 2, 3, 4, 5, 6)
-      # load_identity              # => GL.LoadIdentity
-      def method_missing(m, *args, &block)
-        GL.send(camel_case(m), *args, &block)
-      end
+    # Delegates underscored ruby-style methods to standard camelcased OpenGL
+    # ones.
+    #
+    # Example:
+    #
+    #   matrix_mode(GL_PROJECTION) # => GL.MatrixMode(GL_PROJECTION)
+    #   ortho(1, 2, 3, 4, 5, 6)    # => GL.Ortho(1, 2, 3, 4, 5, 6)
+    #   load_identity              # => GL.LoadIdentity
+    def method_missing(m, *args, &block)
+      GL.send(camel_case(m), *args, &block)
+    end
 
-      private
+    private
 
-      def camel_case(string)
-        string.to_s.gsub(/(?:^|_)(.)/) { $1.upcase }
-      end
+    def camel_case(string)
+      string.to_s.gsub(/(?:^|_)(.)/) { $1.upcase }
     end
   end
+end
