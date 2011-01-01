@@ -12,10 +12,10 @@ $ctrlpoints = [
 
 app = GlutApp.new do
   init do
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB)
-    glutInitWindowSize(500, 500)
-    glutInitWindowPosition(100, 100)
-    glutCreateWindow
+    glut.init_display_mode(GLUT_DOUBLE | GLUT_RGB)
+    glut.init_window_size(500, 500)
+    glut.init_window_position(100, 100)
+    glut.create_window
 
     gl.clear_color(0.0, 0.0, 0.0, 0.0)
     gl.shade_model(GL_FLAT)
@@ -28,7 +28,7 @@ app = GlutApp.new do
     gl.color 1, 1, 1
     gl.begin :line_strip do
       for i in 0..30
-        glEvalCoord1d(i.to_f/30.0)
+        eval_coord1d(i.to_f/30.0)
       end
     end
 
@@ -43,7 +43,7 @@ app = GlutApp.new do
       vertex  4,  4, 0
     end
 
-    glutSwapBuffers
+    glut.swap_buffers
   end
 
   reshape do |w, h|

@@ -1,4 +1,4 @@
-require 'opengl'
+require 'gl'
 require 'simple_gl/constants'
 
 module SimpleGl
