@@ -1,0 +1,6 @@
+Since the OpenGL functions in the ruby bindings don't seem very ruby-esque,
+this little project aims to provide a (hopefully) nicer API to drawing with
+opengl.
+
+Since I'm not really using OpenGL a whole lot, this is mostly just a fun
+project to hack on every once in a while.
